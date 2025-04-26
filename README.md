@@ -10,3 +10,18 @@ dotenv (^16.5.0): A module that loads environment variables from a .env file int
 express (^5.1.0): A web application framework for Node.js, used to build your server and handle HTTP requests.
 mysql (^2.18.1): A Node.js driver for MySQL, used to interact with your MySQL database.
 mysql2 (^3.14.0): A modern MySQL client for Node.js, offering better performance and additional features compared to the mysql package.
+
+#API
+Im using open weather map https://api.openweathermap.org/data/2.5/forecast
+Open weather map provides a 3 day weather forecast with data available in.
+it sends the data in a JSON format with the data having a specific format and naming convention. my app reads that json and processes it into nice readable cards with weather data.  
+if the data is improperly formatted it wont work because i am fetching the data expecting the promised output style. 
+
+#threats
+Injection into the site input- i handled this by limiting it to 5 digits 
+
+json from api injecting into the MYSQL DB- first as i said earlier it needs to fit the format that i was promised or it wont be processed anyway, also if the zip code isnt a zip code it wont be logged
+and therefore not sent to the database. also i am turning the json into just a plain old string of text before saving it to the Database so it wont function as code in the Database if it did have something.
+
+security over the channel- i didnt get a certificate because it is a personal project for school and it costs money. 
+There also isnt any Personal info to be leaked it is just the input by the user and the json being sent to the database. 
